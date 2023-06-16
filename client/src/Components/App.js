@@ -6,16 +6,15 @@ import Bookmarks from "./Bookmarks";
 import TweetDetails from "./TweetDetails";
 import Profile from "./Profile";
 
-
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homefeed/>}/>
-        <Route path="/notifications" element={<Notifications/>}/>
-        <Route path="/bookmarks" element={<Bookmarks/>}/>
-        <Route path="/tweet/:tweetId" element={<TweetDetails/>}/>
-        <Route path="/:profileId" element={<Profile/>}/>
+        <Route path="/" element={<Homefeed />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/bookmarks" element={<Bookmarks />} />
+        <Route path="/tweet/:tweetId" element={<TweetDetails />} />
+        <Route path="/:profileId" element={<Profile />} />
       </Routes>
     </Router>
   );
