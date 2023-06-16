@@ -25,7 +25,7 @@ const SideBar = () => {
         <FontAwesomeIcon icon={faHouse} style={{ width: "25px" }} />
         <Title>Home</Title>
       </Links>
-      <Links to="/profile">
+      <Links to="/treasurymog">
         <FontAwesomeIcon icon={faUser} style={{ width: "25px" }} />
         <Title>Profile</Title>
       </Links>

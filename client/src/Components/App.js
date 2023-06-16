@@ -5,19 +5,30 @@ import Notifications from "./Notifications";
 import Bookmarks from "./Bookmarks";
 import TweetDetails from "./TweetDetails";
 import Profile from "./Profile";
+import SideBar from "./SideBar";
+import { styled } from "styled-components";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Homefeed />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/bookmarks" element={<Bookmarks />} />
-        <Route path="/tweet/:tweetId" element={<TweetDetails />} />
-        <Route path="/:profileId" element={<Profile />} />
-      </Routes>
+      <Container>
+        <SideBar/>
+        <Routes>
+          
+          <Route path="/" element={<Homefeed />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/tweet/:tweetId" element={<TweetDetails />} />
+          <Route path="/:profileId/profile" element={<Profile />} />
+        </Routes>
+      </Container>
+      
     </Router>
   );
 }
+
+const Container  = styled.div`
+display: flex;
+`
 
 export default App;

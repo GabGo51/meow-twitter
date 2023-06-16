@@ -3,19 +3,16 @@ import { styled } from "styled-components";
 
 const Homefeed = () => {
   return (
-    <Container>
-      <SideBar />
+   
       <HomeContainer>
         <Title>Home</Title>
 
       </HomeContainer>
-    </Container>
+    
   );
 };
 
-const Container = styled.div`
-display: flex;
-`
+
 
 const HomeContainer = styled.div`
 
