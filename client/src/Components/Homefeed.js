@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 import { useEffect, useState } from "react";
 
 const Homefeed = () => {
-  const [number, setNumber] = useState(300)
+  const [number, setNumber] = useState(280)
 
   const[value, setValue] = useState("")
   const [ profile, setProfile ] = useState();
@@ -40,7 +40,7 @@ const Homefeed = () => {
           onChange={handleChange}
           />
           <PostingSection>
-            <Number>{number}</Number>
+            <Number number={number}>{number}</Number>
             <Button>Meow</Button>
           </PostingSection>
         </TweetBox>
@@ -88,7 +88,8 @@ outline: none;
 padding-bottom: 250px;
 padding-top: 25px;
 padding-left:90px;
-font-size: 1.3em;
+padding-right: 10px;
+font-size: 1.2em;
 resize: none;
 overflow: hidden;
 `
@@ -114,7 +115,7 @@ justify-content: center;
 const Number = styled.p`
 margin-right: 10px;
 margin-bottom: -30px;
-color: ${number => ((number < 0) ? "red" : "red")};
+color: ${props => props.number < 0 ? "red" : "#21B474"};
 `
 const Button = styled.button`
 
