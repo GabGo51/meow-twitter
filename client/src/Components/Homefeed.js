@@ -1,5 +1,5 @@
-const Homefeed = () =>{
+const Homefeed = () => {
+  return <div>HELLOO</div>;
+};
 
-}
-
-export default Homefeed
+export default Homefeed;
