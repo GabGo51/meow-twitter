@@ -1,8 +1,17 @@
-const Bookmarks = () =>{
-return(
+import SideBar from "./SideBar";
+import { styled } from "styled-components";
 
-  <div>Bookmarks</div>
-)
-}
+const Bookmarks = () => {
+  return (
+    <Container>
+      <SideBar />
+      <>Bookmarks</>
+    </Container>
+  );
+};
 
-export default Bookmarks
+const Container = styled.div`
+  display: flex;
+`;
+
+export default Bookmarks;

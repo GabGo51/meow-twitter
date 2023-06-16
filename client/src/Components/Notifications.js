@@ -1,8 +1,17 @@
-const Notifications = () =>{
-  return(
+import SideBar from "./SideBar";
+import { styled } from "styled-components";
 
-    <div>Notif</div>
-  )
-}
+const Notifications = () => {
+  return (
+    <Container>
+      <SideBar />
+      <>Notifications</>
+    </Container>
+  );
+};
 
-export default Notifications
+const Container = styled.div`
+  display: flex;
+`;
+
+export default Notifications;
