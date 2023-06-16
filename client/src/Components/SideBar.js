@@ -48,6 +48,7 @@ const Container = styled.div`
   flex-direction: column;
   margin-left: 100px;
   margin-top: 20px;
+  
   max-width: 200px;
   height: 100vh;
 `;
@@ -78,7 +79,8 @@ const Links = styled(NavLink)`
     color: hsl(258deg, 100%, 50%);
   }
 
-  svg {
+  &.active{
+    color: hsl(258deg, 100%, 50%);
   }
 `;
 
