@@ -51,6 +51,11 @@ const Container = styled.div`
   
   max-width: 200px;
   height: 100vh;
+
+  @media screen and (max-width: 850px){
+    
+    margin-left: 20px;
+}
 `;
 
 const Logo = styled.div``;

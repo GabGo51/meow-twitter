@@ -14,12 +14,11 @@ function App() {
       <Container>
         <SideBar/>
         <Routes>
-          
           <Route path="/" element={<Homefeed />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/tweet/:tweetId" element={<TweetDetails />} />
-          <Route path="/:profileId/profile" element={<Profile />} />
+          <Route path="/:profileId" element={<Profile />} />
         </Routes>
       </Container>
       
