@@ -46,8 +46,9 @@ const SideBar = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 6.25rem;
+  margin-left: 6rem;
   margin-top: 1rem;
+  margin-right: 1rem;
   
   max-width: 13rem;
   height: 100vh;
