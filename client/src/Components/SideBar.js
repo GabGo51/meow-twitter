@@ -98,7 +98,7 @@ const Button = styled.button`
   border-radius: 2rem;
   border: none;
   border: 1px solid ${COLORS.primary};
-  background-color: ${COLORS.primary});
+  background-color: ${COLORS.primary};
   color: white;
   font-weight: bold;
   font-size: 1.1em;
