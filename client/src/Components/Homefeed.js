@@ -55,11 +55,11 @@ const Homefeed = () => {
 
 
 const HomeContainer = styled.div`
-width: calc(100vw - 400px);
+width: calc(100vw - 25rem);
 
-@media screen and (max-width: 850px){
+@media screen and (max-width: 53rem){
     
-  width: calc(100vw - 200px);
+  width: calc(100vw - 12.5rem);
 }
 
 `
@@ -67,7 +67,7 @@ const Title = styled.div`
 
 font-weight: bold;
 font-size: 1.5em;
-padding: 15px;
+padding: 1rem;
 
 border: 1px solid grey;
 
@@ -85,10 +85,10 @@ bottom: 0px;
 left: 0px;
 right: 0px;
 outline: none;
-padding-bottom: 250px;
-padding-top: 25px;
-padding-left:90px;
-padding-right: 10px;
+padding-bottom: 16.2rem;
+padding-top: 1.8rem;
+padding-left:5.8rem;
+padding-right: 0.7rem;
 font-size: 1.2em;
 resize: none;
 overflow: hidden;
@@ -96,32 +96,32 @@ overflow: hidden;
 
 const ProfileImage = styled.img`
 position: absolute;
-top: 13px;
-left: 13px;
-width: 60px;
+top: 1rem;
+left: 1rem;
+width: 4rem;
 border-radius: 50%;
 z-index: 2;
 `
 
 const PostingSection = styled.div`
 position: absolute;
-top: 205px;
-right: 10px;
+top: 13rem;
+right: .7rem;
 display: flex;
 align-items: center;
 justify-content: center;
 `
 
 const Number = styled.p`
-margin-right: 10px;
-margin-bottom: -30px;
+margin-right: .7rem;
+margin-bottom: -2rem;
 color: ${props => props.number < 0 ? "red" : "#21B474"};
 `
 const Button = styled.button`
 
-  margin-top: 10px;
-  padding: 12px 18px;
-  border-radius: 40px;
+  margin-top: .7rem;
+  padding: .9rem 1.1rem;
+  border-radius: 2.5rem;
   border: none;
   border: 1px solid hsl(258deg, 100%, 50%);
   background-color: hsl(258deg, 100%, 50%);

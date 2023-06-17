@@ -8,6 +8,8 @@ import {
   faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 
+import {COLORS} from "../constant"
+
 const SideBar = () => {
   return (
     <Container>
@@ -22,19 +24,19 @@ const SideBar = () => {
         </svg>
       </Logo>
       <Links to="/">
-        <FontAwesomeIcon icon={faHouse} style={{ width: "25px" }} />
+        <FontAwesomeIcon icon={faHouse} style={{ width: "1.5rem" }} />
         <Title>Home</Title>
       </Links>
       <Links to="/treasurymog">
-        <FontAwesomeIcon icon={faUser} style={{ width: "25px" }} />
+        <FontAwesomeIcon icon={faUser} style={{ width: "1.5rem" }} />
         <Title>Profile</Title>
       </Links>
       <Links to="/notifications">
-        <FontAwesomeIcon icon={faBell} style={{ width: "25px" }} />
+        <FontAwesomeIcon icon={faBell} style={{ width: "1.5rem" }} />
         <Title>Notifications</Title>
       </Links>
       <Links to="/bookmarks">
-        <FontAwesomeIcon icon={faBookmark} style={{ width: "25px" }} />
+        <FontAwesomeIcon icon={faBookmark} style={{ width: "1.5rem" }} />
         <Title>Bookmarks</Title>
       </Links>
 
@@ -46,15 +48,16 @@ const SideBar = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
-  margin-top: 20px;
+  margin-left: 6rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
   
-  max-width: 200px;
+  max-width: 13rem;
   height: 100vh;
 
   @media screen and (max-width: 850px){
     
-    margin-left: 20px;
+    margin-left: 1rem;
 }
 `;
 
@@ -63,7 +66,7 @@ const Logo = styled.div``;
 const Title = styled.p`
   display: inline-flex;
   align-items: center;
-  margin-left: 25px;
+  margin-left: 1.5rem;
   vertical-align: middle;
 `;
 
@@ -75,27 +78,27 @@ const Links = styled(NavLink)`
   display: flex;
   align-items: center;
 
-  padding: 15px;
-  border-radius: 30px;
+  padding: 1rem;
+  border-radius: 2rem;
   transition: 200ms;
 
   &:hover {
     background-color: #d6b7ff;
-    color: hsl(258deg, 100%, 50%);
+    color: ${COLORS.primary};
   }
 
   &.active{
-    color: hsl(258deg, 100%, 50%);
+    color:${COLORS.primary};
   }
 `;
 
 const Button = styled.button`
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 30px;
+  margin-top: 0.75rem;
+  padding: 1rem;
+  border-radius: 2rem;
   border: none;
-  border: 1px solid hsl(258deg, 100%, 50%);
-  background-color: hsl(258deg, 100%, 50%);
+  border: 1px solid ${COLORS.primary};
+  background-color: ${COLORS.primary};
   color: white;
   font-weight: bold;
   font-size: 1.1em;
@@ -108,7 +111,7 @@ const Button = styled.button`
 
   &:active {
     color: white;
-    background-color: hsl(258deg, 100%, 50%);
+    background-color: ${COLORS.primary};
   }
 `;
 
