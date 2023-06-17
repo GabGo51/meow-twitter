@@ -8,6 +8,8 @@ import {
   faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 
+import {COLORS} from "../constant"
+
 const SideBar = () => {
   return (
     <Container>
@@ -82,11 +84,11 @@ const Links = styled(NavLink)`
 
   &:hover {
     background-color: #d6b7ff;
-    color: hsl(258deg, 100%, 50%);
+    color: ${COLORS.primary};
   }
 
   &.active{
-    color: hsl(258deg, 100%, 50%);
+    color:${COLORS.primary};
   }
 `;
 
@@ -95,8 +97,8 @@ const Button = styled.button`
   padding: 1rem;
   border-radius: 2rem;
   border: none;
-  border: 1px solid hsl(258deg, 100%, 50%);
-  background-color: hsl(258deg, 100%, 50%);
+  border: 1px solid ${COLORS.primary};
+  background-color: ${COLORS.primary});
   color: white;
   font-weight: bold;
   font-size: 1.1em;
@@ -109,7 +111,7 @@ const Button = styled.button`
 
   &:active {
     color: white;
-    background-color: hsl(258deg, 100%, 50%);
+    background-color: ${COLORS.primary};
   }
 `;
 
