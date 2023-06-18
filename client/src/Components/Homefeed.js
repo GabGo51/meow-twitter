@@ -21,7 +21,7 @@ const Homefeed = () => {
 
   const handleChange = (event) =>{
     setValue(event.target.value)
-    setNumber(300-value.length)
+    setNumber(280-value.length)
     
   }
 
