@@ -7,6 +7,8 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 
 import moment from "moment";
+import SmallTweet from "./SmallTweet";
+
 
 const Profile = () =>{
   const { profileId } = useParams();
@@ -21,16 +23,25 @@ const Profile = () =>{
       setProfile(parsed.profile);
       setLocation(parsed.profile.location.split(",")[0])
     })
+    
 
     fetch(`/api/${profileId}/feed`)
     .then(response => response.json())
     .then(parsed => {
-      setTweets(parsed.tweetsById)
+      setTweets(Object.values(parsed.tweetsById))
     } )
   }, []);
-  
-  // console.log(profile)
-  console.log(tweets)
+
+  const toggleFollow = () => {
+    console.log("working")
+    if(profile.isBeingFollowedByYou) {
+      return false;
+    } else {
+      return true
+    }    
+  }
+  // console.log(toggleFollow())
+
 
   return(
     <> 
@@ -40,7 +51,7 @@ const Profile = () =>{
         <WrapperHead>
           <Banner src={profile.bannerSrc}/>
           <Avatar src={profile.avatarSrc}/>
-          <Button> {profile.isBeingFollowedByYou ? "Following" : "Follow" }  </Button>
+          <Button onClick={toggleFollow}> {profile.isBeingFollowedByYou ? "Following" : "Follow" }  </Button>
         </WrapperHead>
         <Wrapper>
           <Name>{profile.displayName}</Name>
@@ -55,13 +66,17 @@ const Profile = () =>{
           </Details>
         </Wrapper>
         <ProfileNav>
-          <Link to="/tweets">Tweets</Link>
+          <Link to="/tweets" >Tweets</Link>
           <Link to="/media">Media</Link>
           <Link to="/likes">Likes</Link>
         </ProfileNav>
-        <div>
-          
-        </div>
+        <TweetFeed>
+          {!tweets ? <h1>Loading...</h1> :
+          tweets.map(tweet => {
+            return <SmallTweet key={tweet.id} tweet={tweet}/>
+          })
+          }
+        </TweetFeed>
       </Container> 
     </>)
     }
@@ -98,10 +113,20 @@ z-index: 4;
 background-color: ${COLORS.primary};
 color: white;
 font-weight: bold;
-border: none;
-padding: 1vh;
+border: 1px solid ${COLORS.primary};
+padding: 0.5rem;
 width: 8vw;
 border-radius: 2vh;
+
+&:hover {
+    background-color: white;
+    color: hsl(258deg, 100%, 50%);
+  }
+
+  &:active {
+    color: white;
+    background-color: ${COLORS.primary};
+  }
 `
 const Wrapper = styled.div`
 margin-top: 6vh;
@@ -138,17 +163,23 @@ justify-content: space-between;
 
 const Link = styled(NavLink)`
 width: 20vw;
+padding: 1rem;
 text-align: center;
 text-decoration: none;
 font-weight: bold;
 font-size: 1rem;
 color: ${ COLORS.grey };
 
-&.active {
-  padding-bottom: 1rem;
+&.active {  
   border-bottom: 0.2vh solid ${COLORS.primary};
   color: ${COLORS.primary};
 }
+`
+
+const TweetFeed = styled.div`
+margin: auto;
+width: 70%;
+padding: 2vh;
 `
 
 export default Profile
