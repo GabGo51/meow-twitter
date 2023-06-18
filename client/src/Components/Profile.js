@@ -25,8 +25,8 @@ const Profile = () =>{
     fetch(`/api/${profileId}/feed`)
     .then(response => response.json())
     .then(parsed => {
-      setTweets(parsed.tweetsById)
-    } )
+      setTweets(Object.values(parsed.tweetsById))
+    })
   }, []);
   
   // console.log(profile)
