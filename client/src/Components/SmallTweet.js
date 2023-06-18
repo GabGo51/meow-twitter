@@ -73,7 +73,6 @@ const ImageBox = styled.div`
 const Image = styled.img`
 border-radius:10px;
 width:98%;
-
 object-fit:cover;
 `
 export default SmallTweet
