@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
+import SmallTweet from "./SmallTweet"
 
 const Homefeed = () => {
   const {user, status} = useContext(UserContext)
@@ -24,8 +25,6 @@ const Homefeed = () => {
     .then(response => response.json())
     .then(parsed => {
       setTweets(Object.values(parsed.tweetsById));
-      
-      
     })
   }, []);
   console.log(tweets);
@@ -54,7 +53,7 @@ const Homefeed = () => {
         {!tweets ?<h1>Loading...</h1>:
         tweets.map(tweet=>{
           return(
-            <>{tweet.id}</>
+            <SmallTweet key = {tweet.id} tweet = {tweet}/>
           )
         })
         }
@@ -96,12 +95,8 @@ position: relative;
 const Input = styled.textarea`
 width: 100%;
 position: relative;
-top: 0px;
-bottom: 0px;
-left: 0px;
-right: 0px;
 outline: none;
-padding-bottom: 16.2rem;
+padding-bottom: 12.5rem;
 padding-top: 1.8rem;
 padding-left:5.8rem;
 padding-right: 0.7rem;
@@ -109,9 +104,7 @@ font-size: 1.2em;
 resize: none;
 overflow: hidden;
 `
-const Test = styled.p`
 
-`
 const ProfileImage = styled.img`
 position: absolute;
 top: 1rem;
