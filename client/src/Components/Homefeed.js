@@ -7,9 +7,10 @@ import { useEffect, useState } from "react";
 const Homefeed = () => {
   const {user, status} = useContext(UserContext)
   const [number, setNumber] = useState(280)
-
+  const [tweets, setTweets] = useState()
   const[value, setValue] = useState("")
  
+  
  
 //change on textarea
   const handleChange = (event) =>{
@@ -17,6 +18,18 @@ const Homefeed = () => {
     setNumber(280-value.length)
     
   }
+
+  useEffect(() => {
+    fetch(`/api/me/home-feed`)
+    .then(response => response.json())
+    .then(parsed => {
+      setTweets(Object.values(parsed.tweetsById));
+      
+      
+    })
+  }, []);
+  console.log(tweets);
+  
 
 
   return (
@@ -37,6 +50,14 @@ const Homefeed = () => {
             <Button>Meow</Button>
           </PostingSection>
         </TweetBox>
+        
+        {!tweets ?<h1>Loading...</h1>:
+        tweets.map(tweet=>{
+          return(
+            <>{tweet.id}</>
+          )
+        })
+        }
 
       </HomeContainer>}
     </>
@@ -54,6 +75,8 @@ width: calc(100vw - 25rem);
     
   width: calc(100vw - 12.5rem);
 }
+display:flex
+flex-direction:column;
 
 `
 const Title = styled.div`
@@ -72,7 +95,7 @@ position: relative;
 
 const Input = styled.textarea`
 width: 100%;
-position: absolute;
+position: relative;
 top: 0px;
 bottom: 0px;
 left: 0px;
@@ -86,7 +109,9 @@ font-size: 1.2em;
 resize: none;
 overflow: hidden;
 `
+const Test = styled.p`
 
+`
 const ProfileImage = styled.img`
 position: absolute;
 top: 1rem;
