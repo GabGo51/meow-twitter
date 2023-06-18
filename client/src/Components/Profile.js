@@ -4,14 +4,15 @@ import { styled }from "styled-components";
 import { COLORS } from "../constant";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import moment from "moment";
 
 const Profile = () =>{
   const { profileId } = useParams();
   const [ profile, setProfile ] = useState("");
-  const [ location, setLocation ]= useState("");
+  const [ location, setLocation ] = useState("");
+  const [ tweets, setTweets ] = useState("");
 
   useEffect(() => {
     fetch(`/api/${profileId}/profile`)
@@ -20,8 +21,16 @@ const Profile = () =>{
       setProfile(parsed.profile);
       setLocation(parsed.profile.location.split(",")[0])
     })
+
+    fetch(`/api/${profileId}/feed`)
+    .then(response => response.json())
+    .then(parsed => {
+      setTweets(parsed.tweetsById)
+    } )
   }, []);
   
+  // console.log(profile)
+  console.log(tweets)
 
   return(
     <> 
@@ -31,7 +40,7 @@ const Profile = () =>{
         <WrapperHead>
           <Banner src={profile.bannerSrc}/>
           <Avatar src={profile.avatarSrc}/>
-          <Button> { profile.isBeingFollowedByYou ? "Following" : "Follow" }  </Button>
+          <Button> {profile.isBeingFollowedByYou ? "Following" : "Follow" }  </Button>
         </WrapperHead>
         <Wrapper>
           <Name>{profile.displayName}</Name>
@@ -46,10 +55,13 @@ const Profile = () =>{
           </Details>
         </Wrapper>
         <ProfileNav>
-          <ProfileLink>Tweets</ProfileLink>
-          <ProfileLink>Media</ProfileLink>
-          <ProfileLink>Likes</ProfileLink>
+          <Link to="/tweets">Tweets</Link>
+          <Link to="/media">Media</Link>
+          <Link to="/likes">Likes</Link>
         </ProfileNav>
+        <div>
+          
+        </div>
       </Container> 
     </>)
     }
@@ -124,7 +136,7 @@ display: flex;
 justify-content: space-between;
 `
 
-const ProfileLink = styled(Link)`
+const Link = styled(NavLink)`
 width: 20vw;
 text-align: center;
 text-decoration: none;
@@ -132,7 +144,7 @@ font-weight: bold;
 font-size: 1rem;
 color: ${ COLORS.grey };
 
-&:active {
+&.active {
   padding-bottom: 1rem;
   border-bottom: 0.2vh solid ${COLORS.primary};
   color: ${COLORS.primary};
