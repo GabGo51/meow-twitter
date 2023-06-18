@@ -1,38 +1,31 @@
 
 import { styled } from "styled-components";
-
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 
 const Homefeed = () => {
+  const {user, status} = useContext(UserContext)
   const [number, setNumber] = useState(280)
 
   const[value, setValue] = useState("")
-  const [ profile, setProfile ] = useState();
-
-  useEffect(() => {
-    fetch(`/api/me/profile`)
-    .then(response => response.json())
-    .then(parsed => {
-      setProfile(parsed.profile);
-    })
-  }, []);
-  console.log(profile);
-  console.log(value);
-
+ 
+ 
+//change on textarea
   const handleChange = (event) =>{
     setValue(event.target.value)
-    setNumber(300-value.length)
+    setNumber(280-value.length)
     
   }
 
 
   return (
     <>
-      {!profile ? <h1>Loading...</h1> : 
+      {!user ? <h1>Loading...</h1> : 
       <HomeContainer>
         <Title>Home</Title>
         <TweetBox>
-          <ProfileImage src={profile.avatarSrc}/>
+          <ProfileImage src={user.avatarSrc}/>
           <Input 
           placeholder="What's happening?"
           type="text"
