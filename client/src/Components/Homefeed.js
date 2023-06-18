@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
+import { COLORS } from "../constant";
 import SmallTweet from "./SmallTweet"
 
 const Homefeed = () => {
@@ -84,17 +85,19 @@ font-weight: bold;
 font-size: 1.5em;
 padding: 1rem;
 
-border: 1px solid grey;
+border: 1px solid ${COLORS.paleGrey};
 
 `
 
 const TweetBox = styled.div`
 position: relative;
+border: 1px solid ${COLORS.paleGrey};
 `
 
 const Input = styled.textarea`
 width: 100%;
 position: relative;
+border:none;
 outline: none;
 padding-bottom: 12.5rem;
 padding-top: 1.8rem;
