@@ -13,7 +13,7 @@ export const UserProvider = ({children})=>{
         fetch(`/api/me/profile`)
         .then(response => response.json())
         .then(parsed => {
-          setUser(parsed.user);
+          setUser(parsed.profile);
           setStatus('loaded')
         })
       }, []);
