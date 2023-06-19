@@ -1,21 +1,29 @@
 import styled from 'styled-components'
 import { COLORS } from '../constant';
 import moment from "moment";
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const SmallTweet = ({tweet}) =>{
-    
+    const navigate = useNavigate();
+
+    const handleTweetClick = () => {
+        navigate(`/tweet/${tweet.id}`);
+    };
+
     return(
 
         <TweetContainer>
-            <ImageProfile alt="profile picture" src ={tweet.author.avatarSrc}/>
+            <Link to={`/${tweet.author.handle}/profile`}><ImageProfile alt="profile picture" src ={tweet.author.avatarSrc}/></Link>
             <TweetInfo>
-                <Title><Name>{tweet.author.displayName}</Name> @{tweet.author.handle} · {moment(tweet.timestamp).format("MMM, Do")}</Title>
-                <Text>{tweet.status}</Text>
-                <ImageBox>
-                    {tweet.media && tweet.media.length > 0 && (
-                    <Image src={tweet.media[0].url} alt="tweet image" />)}
-                </ImageBox>
+                <Title><Name to ={`/${tweet.author.handle}/profile`}>{tweet.author.displayName}</Name> @{tweet.author.handle} · {moment(tweet.timestamp).format("MMM, Do")}</Title>
+                <div onClick={handleTweetClick}>
+                    <Text>{tweet.status}</Text>
+                    <ImageBox>
+                        {tweet.media && tweet.media.length > 0 && (
+                        <Image src={tweet.media[0].url} alt="tweet image" />)}
+                    </ImageBox>
+                </div>
             </TweetInfo>
         </TweetContainer>
     )
@@ -43,10 +51,11 @@ flex-direction:column;
 
 `
 
-const Name = styled.p`
+const Name = styled(Link)`
 font-weight:bold;
 color:black;
 margin-right:1rem;
+text-decoration: none;
 `
 const Title = styled.p`
 color:grey;

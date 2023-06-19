@@ -7,6 +7,7 @@ import TweetDetails from "./TweetDetails";
 import Profile from "./Profile";
 import SideBar from "./SideBar";
 import { styled } from "styled-components";
+import HandleProfile from "./HandleProfile";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/tweet/:tweetId" element={<TweetDetails />} />
+          <Route path="/:handle/profile" element={<HandleProfile/>} />
           <Route path="/:profileId" element={<Profile />} />
         </Routes>
       </Container>
