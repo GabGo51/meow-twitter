@@ -1,19 +1,7 @@
 import styled from 'styled-components'
 import { COLORS } from '../constant';
-const handleTime = (timestamp) =>{
-    
-    const dateObj = new Date(timestamp);
-    const month = dateObj.toLocaleString('default', { month: 'short' });
+import moment from "moment";
 
-    const currentTime = new Date();
-    const timeDifference = currentTime - dateObj;
-
-    const totalHours = Math.floor(timeDifference / (1000 * 60 * 60));
-    const totalDays = Math.floor(totalHours / 24);
-
-    return(`${month} ${dateObj.getHours()}h`);
-    
-}
 
 const SmallTweet = ({tweet}) =>{
     console.log(tweet.media[0]);
@@ -22,7 +10,7 @@ const SmallTweet = ({tweet}) =>{
         <TweetContainer>
             <ImageProfile alt="profile picture" src ={tweet.author.avatarSrc}/>
             <TweetInfo>
-                <Title><Name>{tweet.author.displayName}</Name> @{tweet.author.handle} · {handleTime(tweet.timestamp)}</Title>
+                <Title><Name>{tweet.author.displayName}</Name> @{tweet.author.handle} · {moment(tweet.timestamp).format("MMM, Do")}</Title>
                 <Text>{tweet.status}</Text>
                 <ImageBox>
                     {tweet.media && tweet.media.length > 0 && (
