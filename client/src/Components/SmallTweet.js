@@ -46,6 +46,7 @@ width:4rem;
 height:4rem;
 border-radius:50%;
 margin-right:1rem;
+margin-bottom: 1rem;
 
 `
 const TweetInfo = styled.div`
