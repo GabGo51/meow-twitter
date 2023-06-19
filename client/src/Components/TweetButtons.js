@@ -7,18 +7,19 @@ const TweetButton = () =>{
 
   const handleClick = () =>{
     setClicked(!clicked)
+    //do a patch
   }
 
 return(
 
   <Container>
-    <i class="fa-regular fa-comment"></i>
-    <i class="fa-sharp fa-solid fa-retweet"></i>
+    <i className="fa-regular fa-comment"></i>
+    <i className="fa-sharp fa-solid fa-retweet"></i>
     <i
         className={`fa-regular fa-heart ${clicked ? "liked" : ""}`}
         onClick={handleClick}
       ></i>
-    <i class="fa-sharp fa-solid fa-arrow-up-from-bracket"></i>
+    <i className="fa-sharp fa-solid fa-arrow-up-from-bracket"></i>
   </Container>
 )
 }

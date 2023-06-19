@@ -79,10 +79,10 @@ const Homefeed = () => {
           ) : (
             tweets.slice().reverse().map((tweet) => {
               return (
-                <>
-                  <SmallTweet key={tweet.id} tweet={tweet} />
-                  <TweetButton key = {tweet.id}/>
-                </>
+                <div key={tweet.id}>
+                  <SmallTweet  tweet={tweet} />
+                  <TweetButton  tweet = {tweet}/>
+                </div>
                 
 
               )
