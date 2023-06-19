@@ -29,7 +29,11 @@ const Profile = () =>{
     .then(response => response.json())
     .then(parsed => {
       setTweets(Object.values(parsed.tweetsById))
-    } )
+
+
+
+    })
+
   }, []);
   
   const toggleFollow = () => {
