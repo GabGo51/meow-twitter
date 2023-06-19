@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { COLORS } from "../constant";
 import SmallTweet from "./SmallTweet";
+import TweetButton from "./TweetButtons";
 
 const Homefeed = () => {
   const { user, status } = useContext(UserContext);
@@ -77,7 +78,15 @@ const Homefeed = () => {
             <h1>Loading...</h1>
           ) : (
             tweets.slice().reverse().map((tweet) => {
-              return <SmallTweet key={tweet.id} tweet={tweet} />;
+              return (
+                <div key={tweet.id}>
+                  <SmallTweet  tweet={tweet} />
+                  <TweetButton  tweet = {tweet}/>
+                </div>
+                
+
+              )
+              
             })
           )}
         </HomeContainer>
