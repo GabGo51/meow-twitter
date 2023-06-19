@@ -23,7 +23,7 @@ const Profile = () =>{
       setProfile(parsed.profile);
       setLocation(parsed.profile.location.split(",")[0])
     })
-    
+
 
     fetch(`/api/${profileId}/feed`)
     .then(response => response.json())
@@ -31,7 +31,7 @@ const Profile = () =>{
       setTweets(Object.values(parsed.tweetsById))
     } )
   }, []);
-
+  
   const toggleFollow = () => {
     console.log("working")
     if(profile.isBeingFollowedByYou) {
@@ -70,13 +70,13 @@ const Profile = () =>{
           <Link to="/media">Media</Link>
           <Link to="/likes">Likes</Link>
         </ProfileNav>
-        <TweetFeed>
+        <div>
           {!tweets ? <h1>Loading...</h1> :
           tweets.map(tweet => {
             return <SmallTweet key={tweet.id} tweet={tweet}/>
           })
           }
-        </TweetFeed>
+        </div>
       </Container> 
     </>)
     }
@@ -170,16 +170,9 @@ font-weight: bold;
 font-size: 1rem;
 color: ${ COLORS.grey };
 
-&.active {  
+&.active {
   border-bottom: 0.2vh solid ${COLORS.primary};
   color: ${COLORS.primary};
 }
 `
-
-const TweetFeed = styled.div`
-margin: auto;
-width: 70%;
-padding: 2vh;
-`
-
 export default Profile
