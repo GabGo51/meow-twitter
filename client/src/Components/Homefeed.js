@@ -75,7 +75,7 @@ width: calc(100vw - 25rem);
     
   width: calc(100vw - 12.5rem);
 }
-display:flex
+display:flex;
 flex-direction:column;
 
 `
