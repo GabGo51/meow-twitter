@@ -17,21 +17,17 @@ const Profile = () =>{
   const [ tweets, setTweets ] = useState("");
 
   useEffect(() => {
-    fetch(`/api/${profileId}/profile`)
+    fetch("/api/me/profile")
     .then(response => response.json())
     .then(parsed => {
       setProfile(parsed.profile);
       setLocation(parsed.profile.location.split(",")[0])
     })
 
-
     fetch(`/api/${profileId}/feed`)
     .then(response => response.json())
     .then(parsed => {
       setTweets(Object.values(parsed.tweetsById))
-
-
-
     })
 
   }, []);
