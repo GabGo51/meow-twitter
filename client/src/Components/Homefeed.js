@@ -3,6 +3,8 @@ import { styled } from "styled-components";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
+import { COLORS } from "../constant";
+import SmallTweet from "./SmallTweet"
 
 const Homefeed = () => {
   const {user, status} = useContext(UserContext)
@@ -24,8 +26,6 @@ const Homefeed = () => {
     .then(response => response.json())
     .then(parsed => {
       setTweets(Object.values(parsed.tweetsById));
-      
-      
     })
   }, []);
   console.log(tweets);
@@ -54,7 +54,7 @@ const Homefeed = () => {
         {!tweets ?<h1>Loading...</h1>:
         tweets.map(tweet=>{
           return(
-            <>{tweet.id}</>
+            <SmallTweet key = {tweet.id} tweet = {tweet}/>
           )
         })
         }
@@ -75,7 +75,7 @@ width: calc(100vw - 25rem);
     
   width: calc(100vw - 12.5rem);
 }
-display:flex
+display:flex;
 flex-direction:column;
 
 `
@@ -85,23 +85,21 @@ font-weight: bold;
 font-size: 1.5em;
 padding: 1rem;
 
-border: 1px solid grey;
+border: 1px solid ${COLORS.paleGrey};
 
 `
 
 const TweetBox = styled.div`
 position: relative;
+border: 1px solid ${COLORS.paleGrey};
 `
 
 const Input = styled.textarea`
 width: 100%;
 position: relative;
-top: 0px;
-bottom: 0px;
-left: 0px;
-right: 0px;
+border:none;
 outline: none;
-padding-bottom: 16.2rem;
+padding-bottom: 12.5rem;
 padding-top: 1.8rem;
 padding-left:5.8rem;
 padding-right: 0.7rem;
@@ -109,9 +107,7 @@ font-size: 1.2em;
 resize: none;
 overflow: hidden;
 `
-const Test = styled.p`
 
-`
 const ProfileImage = styled.img`
 position: absolute;
 top: 1rem;

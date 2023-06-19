@@ -8,6 +8,7 @@ import Profile from "./Profile";
 import SideBar from "./SideBar";
 import { styled } from "styled-components";
 
+
 function App() {
   return (
     <Router>
