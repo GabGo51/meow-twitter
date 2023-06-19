@@ -21,14 +21,18 @@ const Profile = () =>{
     .then(response => response.json())
     .then(parsed => {
       setProfile(parsed.profile);
-      setLocation(parsed.profile.location.split(",")[0])
-    })
+      if(!parsed.profile.location) {
+        setLocation(null)
+    } else{
+        setLocation(parsed.profile.location.split(",")[0])
+    };   
+    });
 
     fetch(`/api/${profileId}/feed`)
     .then(response => response.json())
     .then(parsed => {
       setTweets(Object.values(parsed.tweetsById))
-    })
+    });
 
   }, []);
   
@@ -145,6 +149,7 @@ grid-template-columns: repeat(2, 0fr);
 width: 30vw;
 justify-content: space-between;
 color: ${COLORS.grey};
+gap: 0.5rem;
 `
 const DetailElement = styled.p`
 width: 15vw;
@@ -153,7 +158,7 @@ align-items: center;
 `
 const BoldStyling = styled.span`
 font-weight: bold;
-padding: 0 5px;
+padding: 0 0.5rem;
 `
 const ProfileNav = styled.div`
 font-size: 0.8rem;
