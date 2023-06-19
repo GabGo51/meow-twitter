@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import { COLORS } from '../constant';
 const handleTime = (timestamp) =>{
     
     const dateObj = new Date(timestamp);
@@ -35,8 +35,10 @@ const SmallTweet = ({tweet}) =>{
 }
 const TweetContainer = styled.div`
 display:flex;
-margin-bottom:2rem;
+padding-top:1rem;
+padding-left:1rem;
 
+border: 1px solid ${COLORS.paleGrey};
 `
 
 const ImageProfile = styled.img`
