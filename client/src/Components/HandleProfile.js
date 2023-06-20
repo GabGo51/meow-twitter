@@ -66,7 +66,7 @@ const HandleProfile = () => {
             })
             .then(()=> {
         
-                setProfile({...profile, isBeingFollowedByYou: true, numFollowers: handleFollow()});
+                setProfile({...profile, isBeingFollowedByYou: true, numFollowers: handleFollow() });
             });
         }  
     };
