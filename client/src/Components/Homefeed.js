@@ -143,6 +143,13 @@ const Input = styled.textarea`
   font-size: 1.2em;
   resize: none;
   overflow: hidden;
+  @media screen and (max-width: 35.5rem) {
+    padding-right: 1.5rem;
+    font-size: 1.1em;
+    
+  }
+
+  
 `;
 
 const ProfileImage = styled.img`
