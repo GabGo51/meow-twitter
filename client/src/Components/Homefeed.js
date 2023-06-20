@@ -38,6 +38,7 @@ const Homefeed = () => {
           setFeed(!feed)
           setValue("");
         }else {
+          event.preventDefault()
           window.alert("Tweet to long!")
         }
         
