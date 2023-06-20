@@ -5,6 +5,7 @@ import { COLORS } from "../constant";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import TweetButtons from "./TweetButtons";
 import moment from "moment";
 import SmallTweet from "./SmallTweet";
 
@@ -63,7 +64,14 @@ const HandleProfile = () => {
         <div>
             {!tweets ? <h1>Loading...</h1> :
             tweets.map(tweet => {
-                return <SmallTweet key={tweet.id} tweet={tweet}/>
+                return (
+                    <div key={tweet.id}>
+                      <SmallTweet  tweet={tweet} />
+                      <TweetButtons  tweet = {tweet}/>
+                    </div>
+                    
+    
+                  )
             })
             }                         
         </div>
