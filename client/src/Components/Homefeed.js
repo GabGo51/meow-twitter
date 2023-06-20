@@ -23,7 +23,7 @@ const Homefeed = () => {
     setValue(event.target.value);
     setNumber(280 - value.length);
   };
-  console.log(value.length);
+  // console.log(value.length);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,7 +45,7 @@ const Homefeed = () => {
           setValue("");
         } else {
           event.preventDefault();
-          window.alert("Tweet to long!");
+          window.alert("Tweet too long!");
         }
       })
       .catch((error) => {
