@@ -64,6 +64,10 @@ text-decoration: none;
 const Title = styled.p`
 color:grey;
 display:flex;
+
+@media screen and (max-width: 35.5rem) {
+    font-size: .8em;
+  }
 `
 
 const Text = styled.p`

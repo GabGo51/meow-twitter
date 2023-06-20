@@ -68,18 +68,27 @@ const Container = styled.div`
     margin-left: -1.2rem;
     
     svg{
-      display: none;
+      /* display: none; */
     }
   }
 `;
 
-const Logo = styled.div``;
+const Logo = styled.div`
+@media screen and (max-width: 35.5rem) {
+    scale: 0.5;
+    margin-right: 1rem;
+  }
+
+`;
 
 const Title = styled.p`
   display: inline-flex;
   align-items: center;
   margin-left: 1.5rem;
   vertical-align: middle;
+  @media screen and (max-width: 35.5rem) {
+    display: none;
+  }
 `;
 
 const Links = styled(NavLink)`
@@ -105,6 +114,7 @@ const Links = styled(NavLink)`
 
   @media screen and (max-width: 35.5rem) {
     font-size: 1.1rem;
+    margin-right: 2rem;
 
     &:hover{
       background-color: white;
