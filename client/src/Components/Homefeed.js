@@ -54,7 +54,7 @@ const Homefeed = () => {
         setTweets(Object.values(parsed.tweetsById));
       });
   }, [feed]);
-  console.log(tweets);
+  
 
   return (
     <>

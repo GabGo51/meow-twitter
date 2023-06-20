@@ -15,7 +15,7 @@ const TweetDetails = () => {
         setTweet(parsed.tweet);
       });
   }, []);
-  console.log(tweet);
+  
 
   return (
     <>

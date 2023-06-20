@@ -8,7 +8,7 @@ const TweetButtons = ({tweet}) => {
     setClicked(!clicked);
     //do a patch
   };
-  console.log(tweet);
+  
 
   return (
     <Container>
