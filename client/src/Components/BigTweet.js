@@ -26,7 +26,7 @@ const BigTweet = ({ tweet }) => {
               <Image src={tweet.media[0].url} alt="tweet image" />
             )}
           </ImageBox>
-          {moment(tweet.timestamp).format("MMM, Do")}
+          {moment(tweet.timestamp).format("h:mm A · MMMM d YYYY")} · <p>Critter web app</p>
         </Box>
       </TweetInfo>
     </TweetContainer>

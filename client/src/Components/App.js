@@ -8,6 +8,7 @@ import Profile from "./Profile";
 import SideBar from "./SideBar";
 import { styled } from "styled-components";
 import HandleProfile from "./HandleProfile";
+import ErrorScreen from "./ErrorScreen";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/tweet/:tweetId" element={<TweetDetails />} />
           <Route path="/:handle/profile" element={<HandleProfile/>} />
           <Route path="/:profileId" element={<Profile />} />
+          <Route path="/error" element={<ErrorScreen/>}/>
         </Routes>
       </Container>
       

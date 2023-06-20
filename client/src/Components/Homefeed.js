@@ -6,13 +6,17 @@ import { COLORS } from "../constant";
 import SmallTweet from "./SmallTweet";
 import TweetButtons from "./TweetButtons";
 import Loading from "./Loading";
+import { useNavigate } from "react-router-dom";
 
 const Homefeed = () => {
   const { user, status } = useContext(UserContext);
   const [number, setNumber] = useState(280);
   const [tweets, setTweets] = useState();
   const [value, setValue] = useState("");
-  const [feed, setFeed] = useState(true);
+
+  const [feed , setFeed]= useState(true);
+  const navigate = useNavigate();
+
 
   //change on textarea
   const handleChange = (event) => {
@@ -46,6 +50,7 @@ const Homefeed = () => {
       })
       .catch((error) => {
         console.error("Error submitting tweet:", error);
+        navigate("/error");
       });
   };
 
@@ -54,7 +59,11 @@ const Homefeed = () => {
       .then((response) => response.json())
       .then((parsed) => {
         setTweets(Object.values(parsed.tweetsById));
-      });
+      })
+      .catch(error => {
+        console.error(error);
+        navigate("/error");
+      })
   }, [feed]);
 
   return (
