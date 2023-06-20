@@ -34,8 +34,13 @@ const Homefeed = () => {
     })
       .then((response) => response.json())
       .then((newTweet) => {
-        setFeed(!feed)
-        setValue("");
+        if(value.length < 280){
+          setFeed(!feed)
+          setValue("");
+        }else {
+          window.alert("Tweet to long!")
+        }
+        
       })
       .catch((error) => {
         console.error("Error submitting tweet:", error);

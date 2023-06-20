@@ -17,13 +17,13 @@ const SmallTweet = ({tweet}) =>{
             <Link to={`/${tweet.author.handle}/profile`}><ImageProfile alt="profile picture" src ={tweet.author.avatarSrc}/></Link>
             <TweetInfo>
                 <Title><Name to ={`/${tweet.author.handle}/profile`}>{tweet.author.displayName}</Name> @{tweet.author.handle} · {moment(tweet.timestamp).format("MMM, Do")}</Title>
-                <div onClick={handleTweetClick}>
+                <Box onClick={handleTweetClick}>
                     <Text>{tweet.status}</Text>
                     <ImageBox>
                         {tweet.media && tweet.media.length > 0 && (
                         <Image src={tweet.media[0].url} alt="tweet image" />)}
                     </ImageBox>
-                </div>
+                </Box>
             </TweetInfo>
         </TweetContainer>
     )
@@ -33,8 +33,8 @@ const TweetContainer = styled.div`
 display:flex;
 padding-top:1rem;
 padding-left:1rem;
-
 border: 1px solid ${COLORS.paleGrey};
+
 `
 
 const ImageProfile = styled.img`
@@ -48,6 +48,10 @@ margin-bottom: 1rem;
 const TweetInfo = styled.div`
 display:flex;
 flex-direction:column;
+flex-wrap: wrap;
+`
+
+const Box = styled.div`
 
 `
 
@@ -64,6 +68,8 @@ display:flex;
 
 const Text = styled.p`
 margin-bottom:1rem;
+
+
 `
 
 const ImageBox = styled.div`
