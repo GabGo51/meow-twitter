@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import TweetButtons from "./TweetButtons";
 import moment from "moment";
 import SmallTweet from "./SmallTweet";
-
+import Loading from "./Loading";
 
 const Profile = () =>{
   const { profileId } = useParams();
@@ -49,7 +49,9 @@ const Profile = () =>{
 
   return(
     <> 
-    {!profile ? <h1>Loading...</h1> : 
+    {!profile ? <LoadingBox>
+          <Loading/>
+        </LoadingBox> : 
     (<> 
       <Container>
         <WrapperHead>
@@ -75,7 +77,7 @@ const Profile = () =>{
           <Link to="/likes">Likes</Link>
         </ProfileNav>
         <div>
-          {!tweets ? <h1>Loading...</h1> :
+          {!tweets ? <Loading/> :
           tweets.map(tweet => {
               return(<div key={tweet.id}>
                   <SmallTweet  tweet={tweet} />
@@ -91,6 +93,13 @@ const Profile = () =>{
     
   )
 }
+const LoadingBox = styled.div`
+width: 100%;
+display: flex;
+align-items:center ;
+justify-content: center;
+margin-top: -40rem;
+`
 
 const Container = styled.div`
 margin: 0 100px 100px 20px;
