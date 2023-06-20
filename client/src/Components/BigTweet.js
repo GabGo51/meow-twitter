@@ -46,6 +46,9 @@ const TweetContainer = styled.div`
   @media screen and (max-width: 53rem) {
     width: calc(100vw - 12.5rem);
   }
+  @media screen and (max-width: 35.5rem) {
+    width: 100%;
+  }
 `;
 
 const UserInfo = styled.div`
