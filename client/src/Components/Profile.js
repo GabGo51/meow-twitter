@@ -96,6 +96,10 @@ const Container = styled.div`
 margin: 0 100px 100px 20px;
 border: 0.1vh solid ${COLORS.paleGrey};
 width: calc(100vw - 25rem);
+
+@media screen and (max-width: 53rem) {
+    width: calc(100vw - 12.5rem);
+  }
 `
 
 const WrapperHead = styled.div`

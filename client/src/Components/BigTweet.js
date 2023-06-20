@@ -38,6 +38,10 @@ width: calc(100vw - 25rem);
 height: 100%;
 padding-top: 20px;
 
+@media screen and (max-width: 53rem) {
+    width: calc(100vw - 12.5rem);
+  }
+
 `
 
 const ImageProfile = styled.img`
