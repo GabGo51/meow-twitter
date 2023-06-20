@@ -5,7 +5,7 @@ const Loading = () =>{
 
   return(
     <Box>
-      <i class="fa-sharp fa-solid fa-circle-notch"></i>
+      <i className="fa-sharp fa-solid fa-circle-notch"></i>
     </Box>
 
 

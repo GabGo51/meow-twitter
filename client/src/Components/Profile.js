@@ -4,7 +4,7 @@ import { styled }from "styled-components";
 import { COLORS } from "../constant";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import TweetButtons from "./TweetButtons";
 import moment from "moment";
 import SmallTweet from "./SmallTweet";
@@ -15,6 +15,7 @@ const Profile = () =>{
   const [ profile, setProfile ] = useState("");
   const [ location, setLocation ] = useState("");
   const [ tweets, setTweets ] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/api/me/profile")
@@ -26,7 +27,11 @@ const Profile = () =>{
     } else{
         setLocation(parsed.profile.location.split(",")[0])
     };   
-    });
+    })
+    .catch(error => {
+      console.error(error);
+      navigate("/error");
+    })
 
     fetch(`/api/${profileId}/feed`)
     .then(response => response.json())
@@ -62,7 +67,6 @@ const Profile = () =>{
         <Wrapper>
           <Name>{profile.displayName}</Name>
           <p>@{profile.handle}</p>
-          <p> { profile.isFollowingYou ? "Follows you" : "" } </p>
           <Bio>{profile.bio}</Bio>
           <Details>
             <DetailElement><CiLocationOn style={{ width: "25px" }} />{location}</DetailElement>
