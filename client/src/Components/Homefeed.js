@@ -170,6 +170,7 @@ const Button = styled.button`
   font-weight: bold;
   font-size: 1.1em;
   transition: 200ms;
+  cursor: pointer;
 
   &:hover {
     background-color: white;
