@@ -34,7 +34,7 @@ display:flex;
 padding-top:1rem;
 padding-left:1rem;
 border: 1px solid ${COLORS.paleGrey};
-
+padding-bottom: 1rem;
 `
 
 const ImageProfile = styled.img`

@@ -34,7 +34,7 @@ const Container = styled.div`
   height: 3rem;
   border: 1px solid ${COLORS.paleGrey};
   border-top: none;
-  border-bottom: none;
+  /* border-bottom: none; */
 
   i {
     cursor: pointer;

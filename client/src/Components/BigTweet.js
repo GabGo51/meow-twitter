@@ -40,7 +40,8 @@ const TweetContainer = styled.div`
   padding-left: 1rem;
   border: 1px solid ${COLORS.paleGrey};
   width: calc(100vw - 25rem);
-  padding-top: 20px;
+  padding: 2rem 2rem;
+  max-height: 80vh;
 
   @media screen and (max-width: 53rem) {
     width: calc(100vw - 12.5rem);
@@ -93,6 +94,7 @@ const Image = styled.img`
   width: 98%;
   object-fit: cover;
   margin-bottom: 0.5rem;
+  max-height: 60vh
 `;
 
 export default BigTweet;
