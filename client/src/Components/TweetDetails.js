@@ -1,30 +1,39 @@
 import { useParams } from "react-router-dom";
 import BigTweet from "./BigTweet";
 import { useEffect, useState } from "react";
-const TweetDetails = () =>{
+import TweetButtons from "./TweetButtons";
+import { styled } from "styled-components";
+const TweetDetails = () => {
   const { tweetId } = useParams();
-  const [tweet, setTweet] = useState("")
+  const [tweet, setTweet] = useState("");
   console.log(tweetId);
 
   useEffect(() => {
     fetch(`/api/tweet/${tweetId}`)
-    .then(response => response.json())
-    .then(parsed => {
-      setTweet(parsed.tweet) 
-    })
+      .then((response) => response.json())
+      .then((parsed) => {
+        setTweet(parsed.tweet);
+      });
   }, []);
   console.log(tweet);
-  
 
-
-  
-  return(
-
-    <>{!tweet ? (
-      <h1>Loading...</h1>
-    ) : (<BigTweet tweet = {tweet}/>)}
+  return (
+    <>
+      {!tweet ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Box>
+          <BigTweet tweet={tweet} />
+          <TweetButtons/>
+        </Box>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default TweetDetails
+const Box = styled.div`
+display: flex;
+flex-direction: column;
+`
+
+export default TweetDetails;

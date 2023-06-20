@@ -5,7 +5,7 @@ import { COLORS } from "../constant";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-import TweetButton from "./TweetButtons";
+import TweetButtons from "./TweetButtons";
 import moment from "moment";
 import SmallTweet from "./SmallTweet";
 
@@ -79,7 +79,7 @@ const Profile = () =>{
           tweets.map(tweet => {
               return(<div key={tweet.id}>
                   <SmallTweet  tweet={tweet} />
-                  <TweetButton  tweet = {tweet}/>
+                  <TweetButtons  tweet = {tweet}/>
                 </div>)
           })
           }

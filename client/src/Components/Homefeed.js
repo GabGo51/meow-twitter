@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { COLORS } from "../constant";
 import SmallTweet from "./SmallTweet";
-import TweetButton from "./TweetButtons";
+import TweetButtons from "./TweetButtons";
 
 const Homefeed = () => {
   const { user, status } = useContext(UserContext);
@@ -86,7 +86,7 @@ const Homefeed = () => {
               return (
                 <div key={tweet.id}>
                   <SmallTweet  tweet={tweet} />
-                  <TweetButton  tweet = {tweet}/>
+                  <TweetButtons  tweet = {tweet}/>
                 </div>
                 
 
