@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { styled }from "styled-components";
 import { COLORS } from "../constant";
@@ -41,16 +41,6 @@ const Profile = () =>{
 
   }, []);
   
-  const toggleFollow = () => {
-    console.log("working")
-    if(profile.isBeingFollowedByYou) {
-      return false;
-    } else {
-      return true
-    }    
-  }
-  // console.log(toggleFollow())
-
 
   return(
     <> 
@@ -62,7 +52,6 @@ const Profile = () =>{
         <WrapperHead>
           <Banner src={profile.bannerSrc}/>
           <Avatar src={profile.avatarSrc}/>
-          <Button onClick={toggleFollow}> {profile.isBeingFollowedByYou ? "Following" : "Follow" }  </Button>
         </WrapperHead>
         <Wrapper>
           <Name>{profile.displayName}</Name>
@@ -71,14 +60,15 @@ const Profile = () =>{
           <Details>
             <DetailElement><CiLocationOn style={{ width: "25px" }} />{location}</DetailElement>
             <DetailElement><AiOutlineCalendar style={{ width: "25px" }}/> Joined {moment(profile.joined).format("MMMM, YYYY")}</DetailElement>
-            <DetailElement><BoldStyling>{profile.numFollowers}</BoldStyling> Following</DetailElement>
-            <DetailElement><BoldStyling>{profile.numFollowing}</BoldStyling> Followers</DetailElement>
+            <LinkElement to={`/${profileId}/following`}><BoldStyling>{profile.numFollowers}</BoldStyling> Following</LinkElement>
+            <LinkElement to={`/${profileId}/followers`}><BoldStyling>{profile.numFollowing}</BoldStyling> Followers</LinkElement>
           </Details>
         </Wrapper>
         <ProfileNav>
-          <Link to="/tweets" >Tweets</Link>
-          <Link to="/media">Media</Link>
-          <Link to="/likes">Likes</Link>
+          
+          <ProfileSections to="/tweets" >Tweets</ProfileSections>
+          <ProfileSections to="/media">Media</ProfileSections>
+          <ProfileSections to="/likes">Likes</ProfileSections>
         </ProfileNav>
         <div>
           {!tweets ? <Loading/> :
@@ -136,35 +126,7 @@ left: 2vw;
 bottom: -5.5vh;
 z-index: 5;
 `
-const Button = styled.button`
-position: absolute;
-right: 3vw;
-bottom: -6vh;
-z-index: 4;
-background-color: ${COLORS.primary};
-color: white;
-font-weight: bold;
-border: 1px solid ${COLORS.primary};
-padding: 0.5rem;
-width: 8vw;
-border-radius: 2vh;
 
-&:hover {
-    background-color: white;
-    color: hsl(258deg, 100%, 50%);
-  }
-
-  &:active {
-    color: white;
-    background-color: ${COLORS.primary};
-  }
-
-  @media screen and (max-width: 35.5rem) {
-    
-   margin-right :50px ;
-   width: 5rem;
-  }
-`
 const Wrapper = styled.div`
 margin-top: 6vh;
 padding: 0 2vh 2vh;
@@ -201,8 +163,19 @@ align-items: center;
 
 @media screen and (max-width: 35.5rem) {
     
-    width: 50vw;
+    width: 40vw;
   }
+`
+const LinkElement = styled(Link)`
+text-decoration: none;
+width: 15vw;
+display: flex;
+align-items: center;
+color: ${COLORS.grey} ;
+
+&:active{
+    color: ${COLORS.primary};
+}
 `
 const BoldStyling = styled.span`
 font-weight: bold;
@@ -214,7 +187,7 @@ display: flex;
 justify-content: space-between;
 `
 
-const Link = styled(NavLink)`
+const ProfileSections = styled(NavLink)`
 width: 20vw;
 padding: 1rem;
 text-align: center;
