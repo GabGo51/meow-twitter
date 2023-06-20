@@ -5,7 +5,7 @@ import { COLORS } from "../constant";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-
+import TweetButtons from "./TweetButtons";
 import moment from "moment";
 import SmallTweet from "./SmallTweet";
 
@@ -77,7 +77,10 @@ const Profile = () =>{
         <div>
           {!tweets ? <h1>Loading...</h1> :
           tweets.map(tweet => {
-            return <SmallTweet key={tweet.id} tweet={tweet}/>
+              return(<div key={tweet.id}>
+                  <SmallTweet  tweet={tweet} />
+                  <TweetButtons  tweet = {tweet}/>
+                </div>)
           })
           }
         </div>
@@ -92,13 +95,19 @@ const Profile = () =>{
 const Container = styled.div`
 margin: 0 100px 100px 20px;
 border: 0.1vh solid ${COLORS.paleGrey};
+width: calc(100vw - 25rem);
+
+@media screen and (max-width: 53rem) {
+    width: calc(100vw - 12.5rem);
+  }
 `
 
 const WrapperHead = styled.div`
 position: relative;
 `
 const Banner = styled.img`
-width: 75vw;
+width: calc(100vw - 25rem);
+
 `
 const Avatar = styled.img`
 width: 15vw;

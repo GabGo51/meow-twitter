@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { COLORS } from "../constant";
 import { useState } from "react";
-const TweetButton = ({tweet}) => {
+const TweetButtons = ({tweet}) => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -52,4 +52,4 @@ justify-content: flex-end;
 align-items: center;
 `
 
-export default TweetButton;
+export default TweetButtons;

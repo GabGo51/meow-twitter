@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { COLORS } from "../constant";
 import SmallTweet from "./SmallTweet";
-import TweetButton from "./TweetButtons";
+import TweetButtons from "./TweetButtons";
 
 const Homefeed = () => {
   const { user, status } = useContext(UserContext);
@@ -34,8 +34,13 @@ const Homefeed = () => {
     })
       .then((response) => response.json())
       .then((newTweet) => {
-        setFeed(!feed)
-        setValue("");
+        if(value.length < 280){
+          setFeed(!feed)
+          setValue("");
+        }else {
+          window.alert("Tweet to long!")
+        }
+        
       })
       .catch((error) => {
         console.error("Error submitting tweet:", error);
@@ -81,7 +86,7 @@ const Homefeed = () => {
               return (
                 <div key={tweet.id}>
                   <SmallTweet  tweet={tweet} />
-                  <TweetButton  tweet = {tweet}/>
+                  <TweetButtons  tweet = {tweet}/>
                 </div>
                 
 
@@ -165,6 +170,7 @@ const Button = styled.button`
   font-weight: bold;
   font-size: 1.1em;
   transition: 200ms;
+  cursor: pointer;
 
   &:hover {
     background-color: white;
