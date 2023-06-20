@@ -104,6 +104,7 @@ const Links = styled(NavLink)`
   }
 
   @media screen and (max-width: 35.5rem) {
+    font-size: 1.1rem;
 
     &:hover{
       background-color: white;
@@ -111,7 +112,9 @@ const Links = styled(NavLink)`
     }
 
     &.active{
+      background-color: white;
     scale:1;
+    
   }
     
     
