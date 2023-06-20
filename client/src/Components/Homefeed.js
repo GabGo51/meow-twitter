@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { COLORS } from "../constant";
 import SmallTweet from "./SmallTweet";
 import TweetButtons from "./TweetButtons";
+import Loading from "./Loading";
 
 const Homefeed = () => {
   const { user, status } = useContext(UserContext);
@@ -60,7 +61,9 @@ const Homefeed = () => {
   return (
     <>
       {!user ? (
-        <h1>Loading...</h1>
+        <LoadingBox>
+          <Loading/>
+        </LoadingBox>
       ) : (
         <HomeContainer>
           <Title>Home</Title>
@@ -81,7 +84,7 @@ const Homefeed = () => {
           </TweetBox>
 
           {!tweets ? (
-            <h1>Loading...</h1>
+            <Loading/>
           ) : (
             tweets.slice().reverse().map((tweet) => {
               return (
@@ -100,6 +103,14 @@ const Homefeed = () => {
     </>
   );
 };
+
+const LoadingBox = styled.div`
+width: 100%;
+display: flex;
+align-items:center ;
+justify-content: center;
+margin-top: -40rem;
+`
 
 const HomeContainer = styled.div`
   width: calc(100vw - 25rem);
