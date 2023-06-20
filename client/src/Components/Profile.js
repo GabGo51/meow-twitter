@@ -95,13 +95,15 @@ const Profile = () =>{
 const Container = styled.div`
 margin: 0 100px 100px 20px;
 border: 0.1vh solid ${COLORS.paleGrey};
+width: calc(100vw - 25rem);
 `
 
 const WrapperHead = styled.div`
 position: relative;
 `
 const Banner = styled.img`
-width: 75vw;
+width: calc(100vw - 25rem);
+
 `
 const Avatar = styled.img`
 width: 15vw;
