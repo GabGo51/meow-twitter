@@ -29,7 +29,7 @@ useEffect(() => {
     fetch(`/api/${handle}/followers`)
     .then(response => response.json())
     .then(parsed => {
-        console.log(parsed.followers);
+        // console.log(parsed.followers);
         setFollowers(parsed.followers);
     })
 }, [handle]);
@@ -89,6 +89,15 @@ display: flex;
 flex-direction: column;
 width: 100vh;
 border: 0.1vh solid ${COLORS.paleGrey};
+
+@media screen and (max-width: 53rem) {
+    width: calc(100vw - 12.5rem);
+  }
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 35.5rem) {
+    width: 100vw;
+  }
 `
 const Profile = styled.div`
 margin: 2vw 7vw;
@@ -147,9 +156,8 @@ border-radius: 3vh;
 
     @media screen and (max-width: 35.5rem) {
     
-    margin-right :50px ;
+    margin-right : 1rem ;
     width: 8rem;
-    bottom: -9vh;
     }
 
 `
