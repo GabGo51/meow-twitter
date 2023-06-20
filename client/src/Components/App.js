@@ -31,6 +31,12 @@ function App() {
 
 const Container  = styled.div`
 display: flex;
+
+@media screen and (max-width: 35.5rem) {
+    display: flex;
+    flex-direction: column;
+    
+  }
 `
 
 export default App;

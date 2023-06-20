@@ -59,6 +59,18 @@ const Container = styled.div`
     
     margin-left: 1rem;
 }
+
+@media screen and (max-width: 35.5rem) {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    margin: 0;
+    margin-left: -1.2rem;
+    
+    svg{
+      display: none;
+    }
+  }
 `;
 
 const Logo = styled.div``;
@@ -90,6 +102,16 @@ const Links = styled(NavLink)`
   &.active{
     color:${COLORS.primary};
   }
+
+  @media screen and (max-width: 35.5rem) {
+
+    &:hover{
+      background-color: white;
+      scale: 1.1;
+    }
+    
+    
+  }
 `;
 
 const Button = styled.button`
@@ -113,6 +135,11 @@ const Button = styled.button`
   &:active {
     color: white;
     background-color: ${COLORS.primary};
+  }
+
+  @media screen and (max-width: 35.5rem) {
+    
+    display: none;
   }
 `;
 

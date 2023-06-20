@@ -108,6 +108,10 @@ const HomeContainer = styled.div`
   }
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 35.5rem) {
+    width: 100vw;
+    
+  }
 `;
 const Title = styled.div`
   font-weight: bold;
@@ -115,6 +119,11 @@ const Title = styled.div`
   padding: 1rem;
 
   border: 1px solid ${COLORS.paleGrey};
+
+  @media screen and (max-width: 35.5rem) {
+    display: none;
+    
+  }
 `;
 
 const TweetBox = styled.div`

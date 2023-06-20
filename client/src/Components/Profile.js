@@ -100,13 +100,18 @@ width: calc(100vw - 25rem);
 @media screen and (max-width: 53rem) {
     width: calc(100vw - 12.5rem);
   }
+  @media screen and (max-width: 35.5rem) {
+    
+    width: 100vw;
+    margin: 0;
+  }
 `
 
 const WrapperHead = styled.div`
 position: relative;
 `
 const Banner = styled.img`
-width: calc(100vw - 25rem);
+width: 100%;
 
 `
 const Avatar = styled.img`
@@ -140,6 +145,12 @@ border-radius: 2vh;
     color: white;
     background-color: ${COLORS.primary};
   }
+
+  @media screen and (max-width: 35.5rem) {
+    
+   margin-right :50px ;
+   width: 5rem;
+  }
 `
 const Wrapper = styled.div`
 margin-top: 6vh;
@@ -151,6 +162,11 @@ font-size: 1.3rem;
 const Bio = styled.p`
 width: 40vw;
 margin: 1vh 0;
+
+@media screen and (max-width: 35.5rem) {
+    
+    width: 80vw;
+  }
 `
 const Details = styled.div`
 display: grid;
@@ -159,11 +175,21 @@ width: 30vw;
 justify-content: space-between;
 color: ${COLORS.grey};
 gap: 0.5rem;
+
+@media screen and (max-width: 35.5rem) {
+    width: 60vw;
+    
+  }
 `
 const DetailElement = styled.p`
 width: 15vw;
 display: flex;
 align-items: center;
+
+@media screen and (max-width: 35.5rem) {
+    
+    width: 50vw;
+  }
 `
 const BoldStyling = styled.span`
 font-weight: bold;
