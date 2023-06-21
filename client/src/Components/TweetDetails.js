@@ -10,7 +10,6 @@ const TweetDetails = () => {
   const { tweetId } = useParams();
   const [tweet, setTweet] = useState("");
   const navigate = useNavigate();
-  console.log(tweetId);
   
 
   useEffect(() => {

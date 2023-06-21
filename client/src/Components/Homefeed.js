@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 import { UserContext } from "./UserContext";
-import { useContext } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { COLORS } from "../constant";
 import SmallTweet from "./SmallTweet";
 import TweetButtons from "./TweetButtons";
@@ -23,7 +22,6 @@ const Homefeed = () => {
     setValue(event.target.value);
     setNumber(280 - value.length);
   };
-  // console.log(value.length);
 
   const handleSubmit = (event) => {
     event.preventDefault();
