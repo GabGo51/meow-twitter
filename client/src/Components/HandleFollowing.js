@@ -12,11 +12,6 @@ const [ following, setFollowing ] = useState();
 const location = useLocation();
 const { pathname } = location;
 const splitLocation = pathname.split("/");
-// console.log(splitLocation);
-
-// console.log(handle);
-// console.log(profile);
-console.log(following);
 
 useEffect(() => {
     fetch(`/api/${handle}/profile`)
@@ -24,7 +19,6 @@ useEffect(() => {
     .then(parsed => {
             setProfile(parsed.profile); 
     })
-
 
     fetch(`/api/${handle}/following`)
     .then(response => response.json())
@@ -132,7 +126,6 @@ border-top: 0.1rem solid ${COLORS.paleGrey};
 border-bottom: 0.1rem solid ${COLORS.paleGrey};
 position: relative;
 `
-
 const ProfileText = styled.div`
 margin-left: 1vh;
 `
@@ -169,7 +162,6 @@ width: 4vw;
 border-radius: 50vw;
 object-fit: contain;
 `
-
 const Name = styled.p`
 font-weight: bold;
 `

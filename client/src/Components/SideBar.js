@@ -68,7 +68,7 @@ const Container = styled.div`
     margin-left: -1.2rem;
     
     svg{
-      /* display: none; */
+      
     }
   }
 `;

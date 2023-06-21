@@ -1,10 +1,9 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { styled }from "styled-components";
 import { COLORS } from "../constant";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { NavLink, useNavigate } from "react-router-dom";
 import TweetButtons from "./TweetButtons";
 import moment from "moment";
 import SmallTweet from "./SmallTweet";

@@ -54,7 +54,6 @@ const TweetContainer = styled.div`
 const UserInfo = styled.div`
 display: flex;
 `
-
 const ImageProfile = styled.img`
   width: 4rem;
   height: 4rem;
@@ -67,9 +66,7 @@ const TweetInfo = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
 `;
-
 const Box = styled.div``;
-
 const Name = styled(Link)`
   font-weight: bold;
   color: black;
@@ -82,16 +79,13 @@ const Title = styled.p`
   display: flex;
   flex-direction: column;
 `;
-
 const Text = styled.p`
   margin-bottom: 1rem;
   font-weight: 500;
   font-size: 1.5em;
   margin-right: 20px;
 `;
-
 const ImageBox = styled.div``;
-
 const Image = styled.img`
   border-radius: 10px;
   width: 98%;
