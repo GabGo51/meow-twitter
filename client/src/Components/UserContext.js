@@ -17,7 +17,7 @@ export const UserProvider = ({children})=>{
           setStatus('loaded')
         })
       }, []);
-      console.log(user);
+      
 
 
 

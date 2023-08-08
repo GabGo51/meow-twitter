@@ -4,24 +4,31 @@ import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { COLORS } from "../constant";
 import SmallTweet from "./SmallTweet";
+import TweetButtons from "./TweetButtons";
+import Loading from "./Loading";
+import { useNavigate } from "react-router-dom";
 
 const Homefeed = () => {
   const { user, status } = useContext(UserContext);
   const [number, setNumber] = useState(280);
   const [tweets, setTweets] = useState();
   const [value, setValue] = useState("");
-  const [feed , setFeed]= useState(true)
+
+  const [feed , setFeed]= useState(true);
+  const navigate = useNavigate();
+
 
   //change on textarea
   const handleChange = (event) => {
     setValue(event.target.value);
     setNumber(280 - value.length);
   };
+  // console.log(value.length);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const postData = {
-      status: value
+      status: value,
     };
 
     fetch("/api/tweet", {
@@ -33,11 +40,17 @@ const Homefeed = () => {
     })
       .then((response) => response.json())
       .then((newTweet) => {
-        setFeed(!feed)
-        setValue("");
+        if (value.length < 280) {
+          setFeed(!feed);
+          setValue("");
+        } else {
+          event.preventDefault();
+          window.alert("Tweet too long!");
+        }
       })
       .catch((error) => {
         console.error("Error submitting tweet:", error);
+        navigate("/error");
       });
   };
 
@@ -46,14 +59,19 @@ const Homefeed = () => {
       .then((response) => response.json())
       .then((parsed) => {
         setTweets(Object.values(parsed.tweetsById));
-      });
+      })
+      .catch(error => {
+        console.error(error);
+        navigate("/error");
+      })
   }, [feed]);
-  console.log(tweets);
 
   return (
     <>
       {!user ? (
-        <h1>Loading...</h1>
+        <LoadingBox>
+          <Loading />
+        </LoadingBox>
       ) : (
         <HomeContainer>
           <Title>Home</Title>
@@ -67,24 +85,46 @@ const Homefeed = () => {
             />
             <PostingSection>
               <Number number={number}>{number}</Number>
-              <Button type="submit" onClick={handleSubmit}>
-                Meow
-              </Button>
+              {value.length > 280 ? (
+                <ButtonDisable disabled={true} >
+                  Meow
+                </ButtonDisable>
+              ) : (
+                <Button type="submit" onClick={handleSubmit}>
+                  Meow
+                </Button>
+              )}
             </PostingSection>
           </TweetBox>
 
           {!tweets ? (
-            <h1>Loading...</h1>
+            <Loading />
           ) : (
-            tweets.slice().reverse().map((tweet) => {
-              return <SmallTweet key={tweet.id} tweet={tweet} />;
-            })
+            tweets
+              .slice()
+              .reverse()
+              .map((tweet) => {
+                return (
+                  <div key={tweet.id}>
+                    <SmallTweet tweet={tweet} />
+                    <TweetButtons tweet={tweet} />
+                  </div>
+                );
+              })
           )}
         </HomeContainer>
       )}
     </>
   );
 };
+
+const LoadingBox = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -40rem;
+`;
 
 const HomeContainer = styled.div`
   width: calc(100vw - 25rem);
@@ -94,6 +134,9 @@ const HomeContainer = styled.div`
   }
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 35.5rem) {
+    width: 100vw;
+  }
 `;
 const Title = styled.div`
   font-weight: bold;
@@ -101,6 +144,10 @@ const Title = styled.div`
   padding: 1rem;
 
   border: 1px solid ${COLORS.paleGrey};
+
+  @media screen and (max-width: 35.5rem) {
+    display: none;
+  }
 `;
 
 const TweetBox = styled.div`
@@ -120,6 +167,10 @@ const Input = styled.textarea`
   font-size: 1.2em;
   resize: none;
   overflow: hidden;
+  @media screen and (max-width: 35.5rem) {
+    padding-right: 1.5rem;
+    font-size: 1.1em;
+  }
 `;
 
 const ProfileImage = styled.img`
@@ -156,6 +207,7 @@ const Button = styled.button`
   font-weight: bold;
   font-size: 1.1em;
   transition: 200ms;
+  cursor: pointer;
 
   &:hover {
     background-color: white;
@@ -167,5 +219,18 @@ const Button = styled.button`
     background-color: hsl(258deg, 100%, 50%);
   }
 `;
+
+const ButtonDisable = styled.button`
+background-color: ${COLORS.paleGrey};
+margin-top: 0.7rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 2.5rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: 200ms;
+  cursor: not-allowed;
+`
 
 export default Homefeed;

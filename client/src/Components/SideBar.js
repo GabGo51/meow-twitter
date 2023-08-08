@@ -59,15 +59,36 @@ const Container = styled.div`
     
     margin-left: 1rem;
 }
+
+@media screen and (max-width: 35.5rem) {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    margin: 0;
+    margin-left: -1.2rem;
+    
+    svg{
+      /* display: none; */
+    }
+  }
 `;
 
-const Logo = styled.div``;
+const Logo = styled.div`
+@media screen and (max-width: 35.5rem) {
+    scale: 0.5;
+    margin-right: 1rem;
+  }
+
+`;
 
 const Title = styled.p`
   display: inline-flex;
   align-items: center;
   margin-left: 1.5rem;
   vertical-align: middle;
+  @media screen and (max-width: 35.5rem) {
+    display: none;
+  }
 `;
 
 const Links = styled(NavLink)`
@@ -90,6 +111,24 @@ const Links = styled(NavLink)`
   &.active{
     color:${COLORS.primary};
   }
+
+  @media screen and (max-width: 35.5rem) {
+    font-size: 1.1rem;
+    margin-right: 2rem;
+
+    &:hover{
+      background-color: white;
+      scale: 1.1;
+    }
+
+    &.active{
+      background-color: white;
+    scale:1;
+    
+  }
+    
+    
+  }
 `;
 
 const Button = styled.button`
@@ -103,6 +142,7 @@ const Button = styled.button`
   font-weight: bold;
   font-size: 1.1em;
   transition: 200ms;
+  cursor: pointer;
 
   &:hover {
     background-color: white;
@@ -112,6 +152,11 @@ const Button = styled.button`
   &:active {
     color: white;
     background-color: ${COLORS.primary};
+  }
+
+  @media screen and (max-width: 35.5rem) {
+    
+    display: none;
   }
 `;
 

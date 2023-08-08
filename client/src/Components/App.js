@@ -8,6 +8,9 @@ import Profile from "./Profile";
 import SideBar from "./SideBar";
 import { styled } from "styled-components";
 import HandleProfile from "./HandleProfile";
+import ErrorScreen from "./ErrorScreen";
+import HandleFollowing from "./HandleFollowing";
+import HandleFollowers from "./HandleFollowers";
 
 
 function App() {
@@ -21,7 +24,10 @@ function App() {
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/tweet/:tweetId" element={<TweetDetails />} />
           <Route path="/:handle/profile" element={<HandleProfile/>} />
+          <Route path="/:handle/following" element={<HandleFollowing/>} />
+          <Route path="/:handle/followers" element={<HandleFollowers/>} />
           <Route path="/:profileId" element={<Profile />} />
+          <Route path="/error" element={<ErrorScreen/>}/>
         </Routes>
       </Container>
       
@@ -31,6 +37,12 @@ function App() {
 
 const Container  = styled.div`
 display: flex;
+
+@media screen and (max-width: 35.5rem) {
+    display: flex;
+    flex-direction: column;
+    
+  }
 `
 
 export default App;
