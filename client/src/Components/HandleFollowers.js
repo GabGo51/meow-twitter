@@ -13,23 +13,17 @@ const location = useLocation();
 const { pathname } = location;
 const splitLocation = pathname.split("/");
 
-// console.log(splitLocation);
-
-// console.log(handle);
-// console.log(profile);
-
 useEffect(() => {
-    fetch(`/api/${handle}/profile`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/profile`)
     .then(response => response.json())
     .then(parsed => {
             setProfile(parsed.profile); 
     })
 
 
-    fetch(`/api/${handle}/followers`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/followers`)
     .then(response => response.json())
     .then(parsed => {
-        // console.log(parsed.followers);
         setFollowers(parsed.followers);
     })
 }, [handle]);
@@ -132,7 +126,6 @@ border-top: 0.1rem solid ${COLORS.paleGrey};
 border-bottom: 0.1rem solid ${COLORS.paleGrey};
 position: relative;
 `
-
 const ProfileText = styled.div`
 margin-left: 1vh;
 `
@@ -159,7 +152,6 @@ border-radius: 3vh;
     margin-right : 1rem ;
     width: 8rem;
     }
-
 `
 const ProfileHandle = styled.p`
 color: ${COLORS.grey};
@@ -169,7 +161,6 @@ width: 4vw;
 border-radius: 50vw;
 object-fit: contain;
 `
-
 const Name = styled.p`
 font-weight: bold;
 `

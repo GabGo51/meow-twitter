@@ -1,10 +1,9 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { styled }from "styled-components";
 import { COLORS } from "../constant";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { NavLink, useNavigate } from "react-router-dom";
 import TweetButtons from "./TweetButtons";
 import moment from "moment";
 import SmallTweet from "./SmallTweet";
@@ -18,7 +17,7 @@ const Profile = () =>{
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/api/me/profile")
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/me/profile`)
     .then(response => response.json())
     .then(parsed => {
       setProfile(parsed.profile);
@@ -33,7 +32,7 @@ const Profile = () =>{
       navigate("/error");
     })
 
-    fetch(`/api/${profileId}/feed`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${profileId}/feed`)
     .then(response => response.json())
     .then(parsed => {
       setTweets(Object.values(parsed.tweetsById))

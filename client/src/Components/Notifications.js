@@ -1,5 +1,4 @@
 
-import { styled } from "styled-components";
 
 const Notifications = () => {
   return (

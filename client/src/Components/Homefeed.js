@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 import { UserContext } from "./UserContext";
-import { useContext } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { COLORS } from "../constant";
 import SmallTweet from "./SmallTweet";
 import TweetButtons from "./TweetButtons";
@@ -23,7 +22,6 @@ const Homefeed = () => {
     setValue(event.target.value);
     setNumber(280 - value.length);
   };
-  // console.log(value.length);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,7 +29,7 @@ const Homefeed = () => {
       status: value,
     };
 
-    fetch("/api/tweet", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tweet`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +53,7 @@ const Homefeed = () => {
   };
 
   useEffect(() => {
-    fetch(`/api/me/home-feed`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/me/home-feed`)
       .then((response) => response.json())
       .then((parsed) => {
         setTweets(Object.values(parsed.tweetsById));

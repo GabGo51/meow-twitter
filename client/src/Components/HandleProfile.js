@@ -16,7 +16,7 @@ const HandleProfile = () => {
     const [ tweets, setTweets ] = useState("");
     
     useEffect(() => {
-        fetch(`/api/${handle}/profile`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/profile`)
         .then(response => response.json())
         .then(parsed => {
                 setProfile(parsed.profile);
@@ -27,7 +27,7 @@ const HandleProfile = () => {
             }   
         })
 
-        fetch(`/api/${handle}/feed`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/feed`)
         .then(response => response.json())
         .then(parsed => {
             setTweets(Object.values(parsed.tweetsById))
@@ -44,7 +44,7 @@ const HandleProfile = () => {
 
     const toggleFollow = () => {
         if(profile.isBeingFollowedByYou) {
-            fetch(`/api/${handle}/unfollow`, {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/unfollow`, {
                 method: "PUT",
                 body: JSON.stringify({ isBeingFollowedByYou: false, numFollowers: handleUnfollow() }),
                 headers: {
@@ -56,7 +56,7 @@ const HandleProfile = () => {
                 setProfile({...profile, isBeingFollowedByYou: false, numFollowers: handleUnfollow()});
             });
         } else {
-            fetch(`/api/${handle}/follow`, {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/follow`, {
                 method: "PUT",
                 body: JSON.stringify({ isBeingFollowedByYou: false, numFollowers: handleFollow() }),
                 headers: {
@@ -110,8 +110,6 @@ const HandleProfile = () => {
                         <SmallTweet  tweet={tweet} />
                         <TweetButtons  tweet = {tweet}/>
                     </div>
-                    
-    
                     )
             })
             }                         
@@ -131,8 +129,6 @@ align-items:center ;
 justify-content: center;
 margin-top: -40rem;
 `
-
-
 const Container = styled.div`
 margin: 0 100px 100px 20px;
 border: 0.1vh solid ${COLORS.paleGrey};
@@ -145,15 +141,12 @@ border: 0.1vh solid ${COLORS.paleGrey};
     width: 100vw;
 }
 `
-
 const WrapperHead = styled.div`
 position: relative;
 `
-
 const Banner = styled.img`
 width: 100%;
 `
-
 const Avatar = styled.img`
 width: 15vw;
 border-radius: 50vw;
@@ -201,7 +194,6 @@ padding: 0.2rem;
 const Name = styled.h1`
 font-size: 1.3rem;
 `
-
 const FollowTag = styled.p`
 background-color: ${COLORS.paleGrey};
 width: 6rem;
@@ -209,7 +201,6 @@ text-align: center;
 border-radius: 6px;
 margin-left: 0.4rem;
 `
-
 const Bio = styled.p`
 width: 40vw;
 margin: 1vh 0;
@@ -260,7 +251,6 @@ font-size: 0.8rem;
 display: flex;
 justify-content: space-between;
 `
-
 const ProfileSections = styled(NavLink)`
 width: 20vw;
 padding: 1rem;

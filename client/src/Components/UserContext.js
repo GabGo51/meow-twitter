@@ -10,7 +10,7 @@ export const UserProvider = ({children})=>{
     const [status, setStatus]= useState('loading')
 
     useEffect(() => {
-        fetch(`/api/me/profile`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/me/profile`)
         .then(response => response.json())
         .then(parsed => {
           setUser(parsed.profile);

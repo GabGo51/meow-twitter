@@ -10,11 +10,10 @@ const TweetDetails = () => {
   const { tweetId } = useParams();
   const [tweet, setTweet] = useState("");
   const navigate = useNavigate();
-  console.log(tweetId);
   
 
   useEffect(() => {
-    fetch(`/api/tweet/${tweetId}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tweet/${tweetId}`)
       .then((response) => response.json())
       .then((parsed) => {
         setTweet(parsed.tweet);
