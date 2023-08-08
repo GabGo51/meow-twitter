@@ -1,15 +1,18 @@
 const path = require('path');
 const express = require('express');
-
+const cors = require("cors")
 const PORT = 31415;
 
 var app = express();
 
+app.use(cors())
 app.use(express.json());
 
 app.use(require('./routes/profile'));
 app.use(require('./routes/tweet'));
 app.use(require('./routes/feed'));
+
+app.get("/hello", (_, res)=>res.send("it works "))
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
