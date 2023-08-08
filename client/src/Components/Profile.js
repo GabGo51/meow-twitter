@@ -17,7 +17,7 @@ const Profile = () =>{
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/api/me/profile")
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/me/profile`)
     .then(response => response.json())
     .then(parsed => {
       setProfile(parsed.profile);
@@ -32,7 +32,7 @@ const Profile = () =>{
       navigate("/error");
     })
 
-    fetch(`/api/${profileId}/feed`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${profileId}/feed`)
     .then(response => response.json())
     .then(parsed => {
       setTweets(Object.values(parsed.tweetsById))

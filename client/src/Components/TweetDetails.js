@@ -13,7 +13,7 @@ const TweetDetails = () => {
   
 
   useEffect(() => {
-    fetch(`/api/tweet/${tweetId}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tweet/${tweetId}`)
       .then((response) => response.json())
       .then((parsed) => {
         setTweet(parsed.tweet);

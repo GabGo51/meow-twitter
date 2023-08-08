@@ -16,7 +16,7 @@ const HandleProfile = () => {
     const [ tweets, setTweets ] = useState("");
     
     useEffect(() => {
-        fetch(`/api/${handle}/profile`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/profile`)
         .then(response => response.json())
         .then(parsed => {
                 setProfile(parsed.profile);
@@ -27,7 +27,7 @@ const HandleProfile = () => {
             }   
         })
 
-        fetch(`/api/${handle}/feed`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/feed`)
         .then(response => response.json())
         .then(parsed => {
             setTweets(Object.values(parsed.tweetsById))
@@ -44,7 +44,7 @@ const HandleProfile = () => {
 
     const toggleFollow = () => {
         if(profile.isBeingFollowedByYou) {
-            fetch(`/api/${handle}/unfollow`, {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/unfollow`, {
                 method: "PUT",
                 body: JSON.stringify({ isBeingFollowedByYou: false, numFollowers: handleUnfollow() }),
                 headers: {
@@ -56,7 +56,7 @@ const HandleProfile = () => {
                 setProfile({...profile, isBeingFollowedByYou: false, numFollowers: handleUnfollow()});
             });
         } else {
-            fetch(`/api/${handle}/follow`, {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/follow`, {
                 method: "PUT",
                 body: JSON.stringify({ isBeingFollowedByYou: false, numFollowers: handleFollow() }),
                 headers: {

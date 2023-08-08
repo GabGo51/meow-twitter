@@ -14,14 +14,14 @@ const { pathname } = location;
 const splitLocation = pathname.split("/");
 
 useEffect(() => {
-    fetch(`/api/${handle}/profile`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/profile`)
     .then(response => response.json())
     .then(parsed => {
             setProfile(parsed.profile); 
     })
 
 
-    fetch(`/api/${handle}/followers`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${handle}/followers`)
     .then(response => response.json())
     .then(parsed => {
         setFollowers(parsed.followers);
