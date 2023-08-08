@@ -8,7 +8,7 @@ import Loading from "./Loading";
 import { useNavigate } from "react-router-dom";
 
 const Homefeed = () => {
-  const { user, status } = useContext(UserContext);
+  const { user} = useContext(UserContext);
   const [number, setNumber] = useState(280);
   const [tweets, setTweets] = useState();
   const [value, setValue] = useState("");
@@ -63,7 +63,8 @@ const Homefeed = () => {
         navigate("/error");
       })
   }, [feed]);
-
+console.log(user.avatarSrc);
+console.log(user);
   return (
     <>
       {!user ? (
